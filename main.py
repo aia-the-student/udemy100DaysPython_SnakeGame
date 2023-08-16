@@ -55,14 +55,18 @@ while game_is_on:
     # detect if collision with the wall
     head_pos = my_snake.head.pos()
     if max(abs(head_pos[0]), abs(head_pos[1])) > 280:
-        game_is_on = False
-        my_scoreboard.game_over()
+        #game_is_on = False
+        #my_scoreboard.game_over()
+        my_scoreboard.reset_hs()
+        my_snake.reset()
 
     # detect collisions with its tail
     for segment in my_snake.body[1:]:
         if my_snake.head.distance(segment.pos()) < 10:
-            game_is_on = False
-            my_scoreboard.game_over()
-            i = my_snake.snake_len
+            #game_is_on = False
+            #my_scoreboard.game_over()
+            my_scoreboard.reset_hs()
+            i = my_snake.snake_len #??? not sure that what it is for
+            my_snake.reset()
 
 screen.exitonclick()

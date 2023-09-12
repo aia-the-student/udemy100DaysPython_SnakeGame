@@ -1,5 +1,4 @@
 from turtle import Turtle
-from turtle import Screen
 
 MOVE_DISTANCE = 20
 UP = (0, 1)
@@ -16,6 +15,7 @@ class Snake:
     # head_next_move = (0, 0)
     heading = (1, 0)
     snake_len = 0
+    head = 0
 
     def __init__(self):
         # self.head_next_move = (self.heading[0]*MOVE_DISTANCE, self.heading[1]*MOVE_DISTANCE)
@@ -83,4 +83,3 @@ class Snake:
         for _ in range(3):
             self.grow()
         self.head = self.body[0]
-

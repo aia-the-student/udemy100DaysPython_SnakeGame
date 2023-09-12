@@ -16,6 +16,7 @@ my_food = Food()
 my_scoreboard = Scoreboard()
 
 
+
 def right():
     my_snake.change_heading("right")
 

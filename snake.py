@@ -1,4 +1,5 @@
 from turtle import Turtle
+from turtle import Screen
 
 MOVE_DISTANCE = 20
 UP = (0, 1)
@@ -19,14 +20,16 @@ class Snake:
     def __init__(self):
         # self.head_next_move = (self.heading[0]*MOVE_DISTANCE, self.heading[1]*MOVE_DISTANCE)
         # self.next_move = [[self.head_next_move], [self.head_next_move], [self.head_next_move]]
-        self.snake_len = 0
-        for _ in range(3):
-            self.grow()
-            # j = i + 1
-            # while j < 3:
-            #     self.next_move[j] = [start_pos] + self.next_move[j]
-            #     j += 1
-        self.head = self.body[0]
+
+        # self.snake_len = 0
+        # for _ in range(3):
+        #     self.grow()
+        #     # j = i + 1
+        #     # while j < 3:
+        #     #     self.next_move[j] = [start_pos] + self.next_move[j]
+        #     #     j += 1
+        # self.head = self.body[0]
+        self.reset()
 
     def move(self):
         # self.head_next_move = (self.head_next_move[0]+self.heading[0]*MOVE_DISTANCE
@@ -36,6 +39,7 @@ class Snake:
         # for i in range(self.snake_len):
         #    move_pos = self.next_move[i].pop(0)
         #     self.body[i].setpos(move_pos)
+
         current_head_pos = self.head.pos()
         for i in range(self.snake_len-1, 0, -1):
             self.body[i].setpos(self.body[i-1].pos())
@@ -67,3 +71,16 @@ class Snake:
         new_square.setpos(start_pos)
         self.body.append(new_square)
         self.snake_len += 1
+
+    def reset(self):
+
+        for _ in range(self.snake_len):
+            s = self.body.pop()
+            s.hideturtle()
+            del s
+
+        self.snake_len = 0
+        for _ in range(3):
+            self.grow()
+        self.head = self.body[0]
+
